@@ -1,0 +1,609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="http://demonstration.abgne.tw/jquery/jquery.easing.1.3.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#gotop").click(function(){
+        jQuery("html,body").animate({
+            scrollTop:0
+        },1000);
+    });
+    $(window).scroll(function() {
+        if ( $(this).scrollTop() > 300){
+            $('#gotop').fadeIn("fast");
+        } else {
+            $('#gotop').stop().fadeOut("fast");
+        }
+    });
+});
+</script>
+
+</head>
+<body>
+
+
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1></span><a href="index.html">支援IPv6軟硬體資料庫系統</a></h1>
+		</div> 
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="hardware.php" accesskey="1" title="">IPv6硬體<br>支援查詢</a></li>
+				<li><a href="software.php" accesskey="2" title="">IPv6軟體<br>支援查詢</a></li>
+				<li><a href="device.php" accesskey="3" title="">IPv6相容<br>設備查詢</a></li>
+				<li><a href="manufacturer.html" accesskey="4" title="">常用廠商<br>聯絡資料</a></li>
+                <li><a href="update_login.php" accesskey="4" title="">廠商資料<br>更新上傳</a></li>
+				<li><a href="http://interop.ipv6.org.tw/index.php" target="_blank" accesskey="5" title=""><img src="images/logo.png" height="80px" style=" margin-top:-1.5em"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="gotop">TOP</div>
+<div id="wel"> <!-- Menu -->
+	<div class="container">
+		<h2>常用廠商聯絡資料</h2>
+        
+        <div>
+			<a href="#FireWall" class="button" style="width:130px">防火牆</a>
+			<a href="#LoadBalance" class="button" style="width:130px">負載平衡器</a>
+			<a href="#SecondLayer" class="button" style="width:130px">第二層交換器</a>
+			<a href="#DnsServer" class="button" style="width:130px">DNS伺服器</a>
+			<a href="#WebServer" class="button" style="width:130px">WEB伺服器</a>
+		</div>	
+		<div>
+			<a href="#Router" class="button" style="width:130px">路由器</a>
+			<a href="#WwwServer" class="button" style="width:130px">伺服器主機</a>
+			<a href="#ThirdLayer" class="button" style="width:130px">第三層交換器</a>
+			<a href="#FtpServer" class="button" style="width:130px">FTP伺服器</a>
+			<a href="#EmailServer" class="button" style="width:130px">EMAIL伺服器</a>
+			<br><br><br>
+			<a href="http://www.abocom.com.tw/" target="_blank"><img style="width:150px; height:50px;" src="images\manufacturer_icon\AboCom.png"></a>
+			<a href="http://www.apachecorp.com/" target="_blank"><img style="width:100px; height:50px;" src="images\manufacturer_icon\Apache-logo.png"></a>
+			<a href="http://www.cisco.com/web/TW/index.html" target="_blank"><img src="images\manufacturer_icon\Cisco-Logo.png"></a>
+			<a href="http://www.dell.com.tw/" target="_blank"><img style="width:50px; height:50px;" src="images\manufacturer_icon\dell-logo.png"></a>
+			<a href="http://www.dlinktw.com.tw/" target="_blank"><img style="width:100px; height:35px;" src="images\manufacturer_icon\d-link.png"></a>
+			<a href="http://www.netfos.com.tw/index.html" target="_blank"><img style="width:150px; height:50px;" src="images\manufacturer_icon\Extreme.png"></a>
+			<a href="http://www.f5.com.tw" target="_blank"><img style="width:50px; height:50px;" src="images\manufacturer_icon\F5-Networks-logo.png"></a>
+			<a href="https://filezilla-project.org/" target="_blank"><img style="width:50px; height:50px;" src="images\manufacturer_icon\FileZillaPortable_128.png"></a>
+			<a href="http://www.fortinet.com.tw/" target="_blank"><img src="images\manufacturer_icon\Fortinet.png"></a>
+			<a href="http://www8.hp.com/tw/zh/home.html" target="_blank"><img style="width:50px; height:50px;" src="images\manufacturer_icon\hp_logo.png"></a>
+			<a href="http://www.ibm.com/tw/zh/" target="_blank"><img src="images\manufacturer_icon\IBM.png"></a>
+			<br><br>
+			<a href="https://www.isc.org/" target="_blank"><img style="width:200px; height:50px;" src="images\manufacturer_icon\isc-logo.png"></a>
+			<a href="http://www.juniper.net/tw/tc/" target="_blank"><img style="width:150px; height:50px;" src="images\manufacturer_icon\Logo_of_Juniper_Networks.svg"></a>
+			<a href="http://www.microsoft.com/zh-tw/default.aspx" target="_blank"><img src="images\manufacturer_icon\microsoft_logo_232.png"></a>
+			<a href="https://www.novell.com/home/" target="_blank"><img src="images\manufacturer_icon\Novell_Logo.gif"></a>
+			<a href="http://www.oracle.com/us/sun/index.htm" target="_blank"><img style="width:100px; height:30px;" src="images\manufacturer_icon\oracle_416x416.png"></a>
+			<a href="http://www.servicepro.com.tw/" target="_blank"><img style="width:50px; height:50px;" src="images\manufacturer_icon\SP-Logo-100.png"></a>
+			<a href="https://security.appspot.com/vsftpd.html" target="_blank"><img src="images\manufacturer_icon\vsftpd14.png"></a>
+
+		</div>
+        <br><br><br><br><br><br>
+	</div>
+</div>
+<!-- 防火牆 -->
+<div id="FireWall"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>防火牆</h2>
+				<center>
+					<div style="word-break:break-all">
+						<table>
+					    	<tr class="t0">
+					        	<td class="t1">製造商</td>
+					        	<td class="t2">網址</td>
+					        	<td class="t3">連絡電話/FAX</td>
+					        	<td class="t4">地址</td>
+					    	</tr>
+					    	<tr>
+					    		<td class="t1">Cisco</td>
+					  			<td class="t2"><a href="http://www.cisco.com/web/TW/index.html">http://www.cisco.com/web/TW/index.html</a></td>
+					            <td class="t3">TEL:(886) 8758 7100<br />FAX:(886) 8758 7199</td>
+					            <td class="t4">台北市信義路四段460號12樓</td>
+					        </tr>
+                            <tr>
+                                <td>F5</td>
+                                <td><a href="http://www.f5.com.tw">http://www.f5.com.tw</a></td>
+                                <td>TEL:(+886) 2 8712 6828<br />FAX:(+886) 2 8712 6960</td>
+                                <td>台北市民生東路三段129號6樓602室</td>
+                            </tr>
+                            <tr>
+                                <td>Fortinet</td>
+                                <td><a href="http://www.fortinet.com.tw/">http://www.fortinet.com.tw/</a></td>
+                                <td>TEL:866-789-9001<br />FAX:408-235-7737</td>
+                                <td>899 Kifer Road Sunnyvale, California 94086</td>
+                            </tr>
+                            <tr>
+                                <td>Juniper</td>
+                                <td><a href="http://www.juniper.net/tw/tc/">http://www.juniper.net/tw/tc/</a></td>
+                                <td>TEL:(+886) 2 2175 6300<br />FAX:(+886) 2 2175 6301</td>
+                                <td>Section 2 Nanking E. Rd 5th Floor, No 167, Unit B,Taipei Taiwan</td>
+                            </tr>
+                            <tr>
+                                <td>Service<br />Pro</td>
+                                <td><a href="http://www.servicepro.com.tw/">http://www.servicepro.com.tw/</a></td>
+                                <td>TEL:(02) 2239-9660<br />FAX:(02) 2239-3105</td>
+                                <td>台北巿文山區116萬芳路5號2樓</td>
+                            </tr>
+						</table>
+					</div>
+				</center>
+                <div id="featured" class="extra2 margin-btm container">
+                	<br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 負載平衡器 -->
+<div id="LoadBalance"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>負載平衡器</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="t1">F5</td>
+                                <td class="t2"><a href="http://www.f5.com.tw">http://www.f5.com.tw</a></td>
+                                <td class="t3">TEL:(+886) 2 8712 6828<br />FAX:(+886) 2 8712 6960</td>
+                                <td class="t4">台北市民生東路三段129號6樓602室</td>
+                            </tr>
+                            <tr>
+                                <td>Service<br />Pro</td>
+                                <td><a href="http://www.servicepro.com.tw/">http://www.servicepro.com.tw/</a></td>
+                                <td>TEL:(02) 2239-9660<br />FAX:(02) 2239-3105</td>
+                                <td>台北巿文山區116萬芳路5號2樓</td>
+                            </tr>
+                            <tr>
+                                <td>Fortinet</td>
+                                <td><a href="http://www.fortinet.com.tw/">http://www.fortinet.com.tw/</a></td>
+                                <td>TEL:866-789-9001<br />FAX:408-235-7737</td>
+                                <td>899 Kifer Road Sunnyvale, California 94086</td>
+                            </tr>
+                            <tr>
+                                <td>Extreme(逸盈)</td>
+                                <td><a href="http://www.netfos.com.tw/index.html">http://www.netfos.com.tw/index.html</a></td>
+                                <td>TEL:(02)6636-8889<br />FAX:(02)6638-9998</td>
+                                <td>台北市松山區八德路四段760號7樓</td>
+                            </tr>
+                            <tr>
+                                <td>AboCom(友旺)</td>
+                                <td><a href="http://www.abocom.com.tw/">http://www.abocom.com.tw/</a></td>
+                                <td>(02)8912-1658<br />FAX:(02)8912-1858</td>
+                                <td>新北市新店區寶橋路235巷130-2號4</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                	<br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 第二層交換器 -->
+<div id="SecondLayer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>第二層交換器</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="t1">AboCom(友旺)</td>
+                                <td class="t2"><a href="http://www.abocom.com.tw/">http://www.abocom.com.tw/</a></td>
+                                <td class="t3">TEL:(02)8912-1658<br />FAX:(02)8912-1858</td>
+                                <td class="t4">新北市新店區寶橋路235巷130-2號4</td>
+                            </tr>
+                            <tr>
+                                <td>Cisco</td>
+                                <td><a href="http://www.cisco.com/web/TW/index.html">http://www.cisco.com/web/TW/index.html</a></td>
+                                <td>TEL:(886) 8758 7100<br />FAX:(886) 8758 7199</td>
+                                <td>台北市信義路四段460號12樓</td>
+                            </tr>
+                            <tr>
+                                <td>Dell</td>
+                                <td><a href="http://www.dell.com.tw/">http://www.dell.com.tw/</a></td>
+                                <td>TEL:00801-836-051</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>D-Link(友訊科技)</td>
+                                <td><a href="http://www.dlinktw.com.tw/">http://www.dlinktw.com.tw/</a></td>
+                                <td>TEL:02-6600-0123#8888</td>
+                                <td>台北市館前路2號B1</td>
+                            </tr>
+                            <tr>
+                                <td>Extreme(逸盈)</td>
+                                <td><a href="http://www.netfos.com.tw/index.html">http://www.netfos.com.tw/index.html</a></td>
+                                <td>TEL:(02)6636-8889<br />FAX:(02)6638-9998</td>
+                                <td>台北市松山區八德路四段760號7樓</td>
+                            </tr>
+                            <tr>
+                                <td>Fortinet</td>
+                                <td><a href="http://www.fortinet.com.tw/">http://www.fortinet.com.tw/</a></td>
+                                <td>TEL:866-789-9001<br />FAX:408-235-7737</td>
+                                <td>899 Kifer Road Sunnyvale, California 94086</td>
+                            </tr>
+                            <tr>
+                                <td>ServicePro</td>
+                                <td><a href="http://www.servicepro.com.tw/">http://www.servicepro.com.tw/</a></td>
+                                <td>TEL:(02) 2239-9660<br />FAX:(02) 2239-3105</td>
+                                <td>台北巿文山區116萬芳路5號2樓</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                	<br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DNS伺服器軟體 -->
+<div id="DnsServer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>DNS伺服器軟體</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="t1">Micro-soft<br />(微軟)</td>
+                                <td class="t2"><a href="http://www.microsoft.com/zh-tw/default.aspx ">http://www.microsoft.com/zh-tw/default.aspx </a></td>
+                                <td class="t3">TEL:0800-00-88-33<br />FAX:0800-00-88-33<br />按 7</td>
+                                <td class="t4">台北市 110 信義區松仁路 7 號 8 樓</td>
+                            </tr>
+                            <tr>
+                                <td>BIND</td>
+                                <td><a href="https://www.isc.org/">https://www.isc.org/</a></td>
+                                <td>TEL:+1 650 423 1300<br />FAX:+1 650 423 1355</td>
+                                <td>Internet Systems Consortium, Inc. 950 Charter Street, Redwood City, CA 94063, USA</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+                    
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- WEB伺服器軟體 -->
+<div id="WebServer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>WEB伺服器軟體</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="t1">Micro-soft<br />(微軟)</td>
+                                <td class="t2"><a href="http://www.microsoft.com/zh-tw/default.aspx ">http://www.microsoft.com/zh-tw/default.aspx </a></td>
+                                <td class="t3">TEL:0800-00-88-33<br />FAX:0800-00-88-33<br />按 7</td>
+                                <td class="t4">台北市110信義區松仁路7 號 8 樓</td>
+                            </tr>
+                            <tr>
+                                <td>Apache</td>
+                                <td><a href="http://www.apachecorp.com/">http://www.apachecorp.com/</a></td>
+                                <td></td>
+                                <td>2000 Post Oak Boulevard,Suite 100 Houston,Texas 77056-4400</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>	
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 路由器 -->
+<div id="Router"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>路由器</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="t1">AboCom(友旺)</td>
+                                <td class="t2"><a href="http://www.abocom.com.tw/">http://www.abocom.com.tw/</a></td>
+                                <td class="t3">TEL:(02)8912-1658<br />FAX:(02)8912-1858</td>
+                                <td class="t4">新北市新店區寶橋路235巷130-2號4</td>
+                            </tr>
+                            <tr>
+                                <td>Cisco</td>
+                                <td><a href="http://www.cisco.com/web/TW/index.html">http://www.cisco.com/web/TW/index.html</a></td>
+                                <td>TEL:(886) 8758 7100<br />FAX:(886) 8758 7199</td>
+                                <td>台北市信義路四段460號12樓</td>
+                            </tr>
+                            <tr>
+                                <td>D-Link<br />(友訊科技)</td>
+                                <td><a href="http://www.dlinktw.com.tw/">http://www.dlinktw.com.tw/</a></td>
+                                <td>TEL:02-6600-0123#8888</td>
+                                <td>台北市館前路2號B1</td>
+                            </tr>
+                            <tr>
+                                <td>Juniper</td>
+                                <td><a href="http://www.juniper.net/tw/tc/">http://www.juniper.net/tw/tc/</a></td>
+                                <td>TEL:(+886) 2 2175 6300<br />FAX:(+886) 2 2175 6301</td>
+                                <td>Section 2 Nanking E. Rd 5th Floor, No 167, Unit B,Taipei Taiwan</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 伺服器主機 -->
+<div id="WwwServer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>伺服器主機</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="t1">AboCom<br />(友旺)</td>
+                                <td class="t2"><a href="http://www.abocom.com.tw/">http://www.abocom.com.tw/</a></td>
+                                <td class="t3">TEL:(02)8912-1658<br />FAX:(02)8912-1858</td>
+                                <td class="t4">新北市新店區寶橋路235巷130-2號4</td>
+                            </tr>
+                            <tr>
+                                <td>Dell</td>
+                                <td><a href="http://www.dell.com.tw/">http://www.dell.com.tw/</a></td>
+                                <td>TEL:00801-836-051</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>HP</td>
+                                <td><a href="http://www8.hp.com/tw/zh/home.html">http://www8.hp.com/tw/zh/home.html</a></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>IBM</td>
+                                <td><a href="http://www.ibm.com/tw/zh/">http://www.ibm.com/tw/zh/</a></td>
+                                <td>TEL:(886) 02-8723-8888</td>
+                                <td>110 臺北市松仁路 7 號 3 樓</td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft<br />(微軟)</td>
+                                <td><a href="http://www.microsoft.com/zh-tw/default.aspx">http://www.microsoft.com/zh-tw/default.aspx</a></td>
+                                <td>TEL:0800-00-88-33<br />FAX:0800-00-88-33 按 7</td>
+                                <td>台北市 110 信義區松仁路 7 號 8 樓</td>
+                            </tr>
+                            <tr>
+                                <td>Sun<br />(昇陽電腦)</td>
+                                <td><a href="http://www.oracle.com/us/sun/index.htm">http://www.oracle.com/us/sun/index.htm</a></td>
+                                <td>TEL:(02)2312-7588<br />FAX:(02)2312-8688</td>
+                                <td>台北市10018忠孝西路一段66號35樓</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                	<br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 第三層交換器 -->
+<div id="ThirdLayer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>第三層交換器</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="t1">Cisco</td>
+                                <td class="t2"><a href="http://www.cisco.com/web/TW/index.html">http://www.cisco.com/web/TW/index.html</a></td>
+                                <td class="t3">TEL:(886) 8758 7100<br />FAX:(886) 8758 7199</td>
+                                <td class="t4">台北市信義路四段460號12樓</td>
+                            </tr>
+                            <tr>
+                                <td>Extreme<br />(逸盈)</td>
+                                <td><a href="http://www.netfos.com.tw/index.html">http://www.netfos.com.tw/index.html</a></td>
+                                <td>TEL:(02)6636-8889<br />FAX:(02)6638-9998</td>
+                                <td>台北市松山區八德路四段760號7樓</td>
+                            </tr>
+                            <tr>
+                                <td>HP</td>
+                                <td><a href="http://www8.hp.com/tw/zh/home.html">http://www8.hp.com/tw/zh/home.html</a></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Juniper</td>
+                                <td><a href="http://www.juniper.net/tw/tc/">http://www.juniper.net/tw/tc/</a></td>
+                                <td>TEL:(+886) 2 2175 6300<br />FAX:(+886) 2 2175 6301</td>
+                                <td>Section 2 Nanking E. Rd 5th Floor, No 167, Unit B,Taipei Taiwan</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FTP伺服器軟體 -->
+<div id="FtpServer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>FTP伺服器軟體</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="t1">FileZilla</td>
+                                <td class="t2"><a href="https://filezilla-project.org/">https://filezilla-project.org/</a></td>
+                                <td class="t3"></td>
+                                <td class="t4"></td>
+                            </tr>
+                            <tr>
+                                <td>vsftp</td>
+                                <td><a href="https://security.appspot.com/vsftpd.html">https://security.appspot.com/vsftpd.html</a></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- EMAIL伺服器軟體 -->
+<div id="EmailServer"><!-- Toggle Tag -->
+	<div id="wrapper">
+    	<div id="featured-wrapper">
+            <div class="container">
+                <h2>EMAIL伺服器軟體</h2>
+                <center>
+                    <div style="word-break:break-all">
+                        <table>
+                            <tr class="t0">
+                                <td class="t1">製造商</td>
+                                <td class="t2">網址</td>
+                                <td class="t3">連絡電話/FAX</td>
+                                <td class="t4">地址</td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="t1">AboCom<br />(友旺)</td>
+                                <td class="t2"><a href="http://www.abocom.com.tw/">http://www.abocom.com.tw/</a></td>
+                                <td class="t3">(02)8912-1658<br />(02)8912-1858</td>
+                                <td class="t4">新北市新店區寶橋路235巷130-2號4</td>
+                            </tr>
+                            <tr>
+                                <td>Micro-soft<br />(微軟)</td>
+                                <td><a href="http://www.microsoft.com/zh-tw/default.aspx ">http://www.microsoft.com/zh-tw/default.aspx </a></td>
+                                <td>TEL: 0800-00-88-33<br />FAX:0800-00-88-33<br />按 7</td>
+                                <td>台北市 110信義區松仁路7 號 8 樓</td>
+                            </tr>
+                            <tr>
+                                <td>Nov-ell<br />(網威)</td>
+                                <td><a href="https://www.novell.com/home/">https://www.novell.com/home/</a></td>
+                                <td>TEL:(02)2376-0000</td>
+                                <td>No. 216 Section 2,Dunhua S. R,Taipei</td>
+                            </tr>
+                        </table>
+                    </div>
+                </center>
+                <div id="featured" class="extra2 margin-btm container">
+                    <br /><br /><br />
+					
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="copyright" class="container">
+    <h1><p>本網站建置經費由財團法人台灣網路資訊中心-TWNIC 贊助</p></h1>
+    <h2><p>&copy;Design by <a href="http://www.mcu.edu.tw" target="_blank">MCU</a>銘傳大學製作</p></h2>
+</div>
+</body>
+</html>

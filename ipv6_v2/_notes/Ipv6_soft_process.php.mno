@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:brand;datatype:blob,name:type;datatype:blob,name:version;datatype:blob,name:Upgradable;datatype:int,name:SearchCount;datatype:int,name:NO;datatype:int" />
+</info>
