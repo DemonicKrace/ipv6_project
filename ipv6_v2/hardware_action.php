@@ -11,6 +11,10 @@ $lvnum = $_GET['lv'];//get ajax data 'lv'
 $table = $_GET['table'];
 $jarray = array();//使用array儲存結果，再以json_encode一次回傳
 
+//$_SESSION['table'] //當下act 傳入選擇的項目
+//$_SESSION['brand'] //品牌
+//$_SESSION['code']  //型號
+
 switch($act){
 case 'first':{
 	if($lvnum != 0){
@@ -41,8 +45,7 @@ case 'first':{
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['table']="";
 	}
 	echo json_encode($jarray);
 	return;
@@ -55,14 +58,12 @@ case 'second':{
 	    $table = $_SESSION['table'];      //$table = first時的table值(資料表)
 		$query = "SELECT DISTINCT  `Search_code` FROM  `$table` WHERE  `Search_menufactor` =  '$brand'";
 		//$query = "SELECT DISTINCT  `Search_code` FROM  `device_01load_balancer` WHERE  `Search_menufactor` =  'F5'";
-		//$query = "SELECT DISTINCT 'Search_code' FROM '$table' WHERE 'Search_menufactor' = '廠商''";
         $result = mysql_query($query, $V6UpgradeDatabase);
         while ($row = mysql_fetch_assoc($result)) {
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['brand']="";
 	}
 	echo json_encode($jarray);
 	return;
@@ -77,8 +78,7 @@ case 'third':{
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['code']="";
 	}
 	echo json_encode($jarray);
 	return;

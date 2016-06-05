@@ -22,7 +22,6 @@ Released   : 20140124
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 <script type="text/javascript" src="jquery.js"></script>
-
 </head>
 <body>
 <div id="header-wrapper">
@@ -36,7 +35,7 @@ Released   : 20140124
 				<li><a href="software.php" accesskey="2" title="">IPv6軟體<br>支援查詢</a></li>
 				<li><a href="device.php" accesskey="3" title="">IPv6相容<br>設備查詢</a></li>
 				<li><a href="manufacturer.html" accesskey="4" title="">常用廠商<br>聯絡資料</a></li>
-				<li><a href="update_login.php" accesskey="4" title="">廠商資料<br>更新上傳</a></li>
+<!--				<li><a href="update_login.php" accesskey="4" title="">廠商資料<br>更新上傳</a></li>-->
 				<li><a href="http://interop.ipv6.org.tw/index.php" target="_blank" accesskey="5" title=""><img src="images/logo.png" height="80px" style=" margin-top:-1.5em"></a></li>
 			</ul>
 		</div>
@@ -53,7 +52,7 @@ Released   : 20140124
 				<br />
 				　設備類型:
 				<select id="myParentSelect" Style="Font-Size:20pt">
-					<option value="">請選擇(*必選)</option>
+					<option value="0">請選擇(*必選)</option>
 				<?php
 				    // 資料庫設定
 				    require_once("Connections/V6UpgradeDatabase.php");
@@ -77,22 +76,22 @@ Released   : 20140124
 				<br />
 				　品牌:
 				<select id="myFirstChildSelect" Style="Font-Size:20pt">
-					<option value="">請選擇</option>
+					<option value="0">請選擇</option>
 				</select>
 				<br />
 				<br />
 				　型號:
 				<select id="mySecondChildSelect" Style="Font-Size:20pt">
-					<option value="">請選擇</option>
+					<option value="0">請選擇</option>
 				</select><br />
 
 				<script> 
 				$(document).ready(function(){  
-				 	 //-------------------------第二層　廠商-------------------------------
+				 	 //-------------------------第一層　設備類型-------------------------------
 				   $('#myParentSelect').change(function(){  
-				      //更動第一層時第二,三層清空
-				     $('#myFirstChildSelect').empty().append("<option value=''>請選擇</option>");
-					 //$('#mySecondChildSelect').empty().append("<option value=''>請選擇</option>");
+				      //每次處理時,第二第三層清空
+				     $('#myFirstChildSelect').empty().append("<option value='0'>請選擇</option>");
+					 $('#mySecondChildSelect').empty().append("<option value='0'>請選擇</option>");
 				     var i=1;
 					 var j=0
 				     $.ajax({  
@@ -106,9 +105,9 @@ Released   : 20140124
 				     datatype:  "json",  
 				     success: function(result){  
 				     //當第一層回到預設值時，第二層回到預設位置
-				     if(result == ""){  
+				     /*if(result == 0){  
 				       $('#myFirstChildSelect').val($('option:first').val());//pseudo selector   
-				      }
+				      }*/
 				      //依據第一層回傳的值去改變第二層的內容
 				      while(i<result.length+1){  
 				      $("#myFirstChildSelect").append("<option value='"+i+"'>"+result[j]['Search_menufactor']+"</option>");  
@@ -117,14 +116,14 @@ Released   : 20140124
 				     }  
 				     },  
 				     error:  function(error){  
-				       alert("error"); 
+				       alert("error1"); 
 				     }  
 				     });
 					});   
-					   // -------------------------第三層　型號------------------------------
+					   // -------------------------第二層　品牌------------------------------
 				   $('#myFirstChildSelect').change(function(){  
-				      //更動第一層時第二,三層清空
-				     $('#mySecondChildSelect').empty().append("<option value=''>請選擇</option>");
+				      //每次處理時,第三層清空
+				     $('#mySecondChildSelect').empty().append("<option value='0'>請選擇</option>");
 				     var i=1;
 					 var j=0;
 				     $.ajax({  
@@ -134,13 +133,13 @@ Released   : 20140124
 					  //table: .html html輸出的格式
 					  //lv   : .val selected的option參數
 					  //
-				     data:    {act:'second',table: $('#myFirstChildSelect option:selected').html() ,lv:$('#myFirstChildSelect option:selected').val()},
+				     data:    {act:'second',table: $('#myFirstChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
 				     datatype:  "json",  
-				     success: function(result){  
+				     success: function(result){ 
 				     //當第2層回到預設值時，第3層回到預設位置
-				     if(result == ""){  
+				     /*if(result == 0){  
 				       $('#mySecondChildSelect').val($('option:first').val());//pseudo selector   
-				      }
+				      }*/
 				      //依據第2層回傳的值去改變第3層的內容
 				      while(i<result.length+1){  
 				      $("#mySecondChildSelect").append("<option value='"+i+"'>"+result[j]['Search_code']+"</option>");  
@@ -149,23 +148,23 @@ Released   : 20140124
 				     }  
 				     },  
 				     error:  function(error){  
-				       alert("error"); 
+				       alert("error2"); 
 				     }  
 				     });
 					});
-					   // -------------------------第4層　收尾用------------------------------
+					   // -------------------------第三層　型號------------------------------
 				   $('#mySecondChildSelect').change(function(){  
 				     $.ajax({  
 				     type:    "GET",  
 				     url:     "hardware_action.php",  
-				     data:    {act:'third',table: $('#mySecondChildSelect option:selected').html() ,lv:$('#mySecondChildSelect option:selected').val()},
+				     data:    {act:'third',table: $('#mySecondChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
 				     datatype:  "json" ,
 					  success: function(result){  
 				     //當第2層回到預設值時，第3層回到預設位置
 				      
 				     },  
 				     error:  function(error){  
-				       alert("error"); 
+				       alert("error3"); 
 				     }
 				     });
 					});

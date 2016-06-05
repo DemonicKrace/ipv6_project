@@ -35,7 +35,7 @@ Released   : 20140124
 				<li><a href="software.php" accesskey="2" title="">IPv6軟體<br>支援查詢</a></li>
 				<li><a href="device.php" accesskey="3" title="">IPv6相容<br>設備查詢</a></li>
 				<li><a href="manufacturer.html" accesskey="4" title="">常用廠商<br>聯絡資料</a></li>
-				<li><a href="update_login.php" accesskey="4" title="">廠商資料<br>更新上傳</a></li>
+<!--				<li><a href="update_login.php" accesskey="4" title="">廠商資料<br>更新上傳</a></li>-->
 				<li><a href="http://interop.ipv6.org.tw/index.php" target="_blank" accesskey="5" title=""><img src="images/logo.png" height="80px" style=" margin-top:-1.5em"></a></li>
 			</ul>
 		</div>

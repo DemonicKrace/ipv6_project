@@ -36,8 +36,7 @@ case 'first':{
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['table']="";
 	}
 	echo json_encode($jarray);
 	return;
@@ -56,8 +55,7 @@ case 'second':{
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['brand']="";
 	}
 	echo json_encode($jarray);
 	return;
@@ -72,8 +70,7 @@ case 'third':{
             $jarray[] = $row;        
         }
 	}else{
-		echo $query;
-		return;
+		$_SESSION['version']="";
 	}
 	echo json_encode($jarray);
 	return;
