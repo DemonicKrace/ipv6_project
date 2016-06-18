@@ -40,7 +40,7 @@
 									<nav id="nav">
 										<a href="index.html">首頁</a>
 										<a href="device.php">設備搜尋</a>
-										<a href="update_login.php">廠商上傳</a>
+										<!--<a href="update_login.php">廠商上傳</a>-->
 										<a href="manufacturer.html">聯絡廠商</a>
 									</nav>
 
@@ -67,7 +67,7 @@
 											<br />
 											　廠商:
 											<select id="myParentSelect" Style="Font-Size:20pt">
-												<option value="">請選擇(*必選)</option>
+												<option value="0">請選擇</option>
 											<?php
 											    // 資料庫設定
 											    require_once("Connections/V6UpgradeDatabase.php");
@@ -97,7 +97,7 @@
 											 	//當選擇廠商欄位時，處理第二層型號的欄位
 											   	$('#myParentSelect').change(function(){  
 												    //每次處理前先清空之前第二層型號的欄位
-												    $('#myFirstChildSelect').empty().append("<option value=''>請選擇</option>");
+												    $('#myFirstChildSelect').empty().append("<option value='0'>請選擇</option>");
 													 
 													var i=1;
 													var j=0;
@@ -111,9 +111,9 @@
 
 														success: function(result){  
 															//當第一層回到預設值時，第二層回到預設位置
-															if(result == ""){  
+															/*if(result == 0){  
 																$('#myFirstChildSelect').val($('option:first').val());//pseudo selector   
-															}
+															}*/
 															//依據第一層回傳的值去改變第二層的內容
 															while(i<result.length+1){  
 																$("#myFirstChildSelect").append("<option value='"+i+"'>"+result[j]['model']+"</option>");  

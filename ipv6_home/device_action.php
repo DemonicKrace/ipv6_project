@@ -16,7 +16,7 @@ $jarray = array();//to store return data
 switch($act){
 case 'first':{
 	$manufacturer = $_GET['manufacturer'];//get ajax data 'manufacturer'
-	if($manufacturer != "請選擇(*必選)"){
+	if($manufacturer != "請選擇"){
 		$_SESSION["manufacturer"] = $manufacturer;// store to session
 		$query = "SELECT DISTINCT model FROM $table WHERE manufacturer = '$manufacturer'";
 		$result = mysql_query($query, $V6UpgradeDatabase);    

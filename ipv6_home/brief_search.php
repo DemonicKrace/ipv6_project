@@ -68,8 +68,8 @@
 										<table style="width:100%;border-collapse: collapse; word-break:break-all">
 											
 											<tr class="tiltleField">
-												<td>manufacturer</td>
-												<td>model</td>
+												<td>廠商</td>
+												<td>型號</td>
 											</tr>
 
 

@@ -46,7 +46,7 @@
 									<nav id="nav">
 										<a href="index.html">首頁</a>
 										<a href="device.php">設備搜尋</a>
-										<a href="update_login.php">廠商上傳</a>
+										<!--<a href="update_login.php">廠商上傳</a>-->
 										<a href="manufacturer.html">聯絡廠商</a>
 									</nav>
 
@@ -62,15 +62,31 @@
 						<div class="container">
 							<div class="row">
 								<div class="12u">
-
+									<section style="background: #fff;margin:0;">				<h1 style="font-size: xx-large;margin-bottom: 5%;">支援項目說明</h1>
+										<ul style="text-align:left;">
+										    <ul><li>Static 靜態模式，固定的ip位址</li></ul>
+										    <ul><li>PPPoE(Point-to-Point Protocol Over Ethernet)，乙太網上的對等協定，是將對等協定（PPP）封裝在乙太網（Ethernet）框架中的一種網路隧道協定。</li></ul>
+										    <ul><li>DHCPv6 一個用來配置工作在IPv6網絡上的IPv6主機所需的IP位址、IP前綴和/或其他配置的網絡協議。</li></ul>
+										    <ul><li>6to4 一種轉送機制，設計目的是為了從網際協議版本 4（IPv4）過渡到版本 6（IPv6）。這個協定可以讓IPv6封包，不必經過外部通道（tunnel）就可以穿越IPv4網際網路。為了能夠使6to4網路能夠與原生IPv6網路之間溝通，必須建立一個特定的轉送伺服器。</li></ul>
+										    <ul><li>Tunnel 通道（Tunneling）是一個用來連結IPv4與IPv6的機制。為了連通IPv6網際網路，一個孤立主機或網路需要使用現存IPv4的基礎設施來攜帶IPv6封包。這可由將IPv6封包裝入IPv4封包的通道協議來完成，實際上就是將IPv4當成IPv6的連結層。</li></ul>
+										    <ul><li>6rd是建立在6to4的機制上，提供ISP快速布建IPv6網路的機制。</li></ul>
+										    <ul><li>Tspc 即Tunnel Broker 模式，利用既有的 IPv4 網路連結到 IPv4 轉換 IPv6 的伺服器，透過 IPv4 的網路建立一條特殊通道來傳輸 IPv6 的資料。</li></ul>
+										    <ul><li>Aiccu (Automatic IPv6 Connectivity Client Utility)，一種6in4 穿隧參數後自動組態設定的工具軟體。</li></ul>
+										    <ul><li>In_sell 是否市售</li></ul>
+										    <ul><li>Cable 電纜數據線</li></ul>
+										    <ul><li>Dsl 數位用戶迴路（Digital Subscriber Line），是通過銅線或者本地電話網提供數位連線的一種技術。</li></ul>
+										    <ul><li>Router/AP 路由功能及無線存取</li></ul>
+										</ul>
+									</section>
 									<!-- Main Content -->
 									<section>
+										<p>√ = 支援該功能 &nbsp;&nbsp;&nbsp;X = 不支援該功能</p>
 										<table style="width:100%;border-collapse: collapse; word-break:break-all">
 											
 											<tr class="tiltleField">
-												<td>manufacturer</td>
-												<td>model</td>
-												<td>version</td>
+												<td>廠商</td>
+												<td>型號</td>
+												<td>版本</td>
 												<td>Static</td>
 												<td>Pppoe</td>
 												<td>Dhcpv6</td>
