@@ -2,7 +2,7 @@
 	require_once("Connections/V6UpgradeDatabase.php");
 	session_start();
 	$q_table = "V6_HOME";
-	$q_manufacturer = "";
+	$q_manufacturer = $_POST[''];
 	$q_model = "";
 	$query = "SELECT * FROM $q_table";
 
@@ -11,11 +11,6 @@
 	$data_count = 0;
 ?>
 <!DOCTYPE HTML>
-<!--
-	Halcyonic by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>IPv6分享器搜尋系統</title>
@@ -46,7 +41,7 @@
 									<nav id="nav">
 										<a href="index.html">首頁</a>
 										<a href="device.php">設備搜尋</a>
-										<!--<a href="update_login.php">廠商上傳</a>-->
+										<a href="update_login.php">廠商上傳</a>
 										<a href="manufacturer.html">聯絡廠商</a>
 									</nav>
 
@@ -114,17 +109,20 @@
 														$q_model = $_SESSION["model"];
 														$query = "SELECT * FROM $q_table WHERE manufacturer = '$q_manufacturer' AND model = '$q_model'";
 													}
-													else{
-														$query = "SELECT * FROM $q_table WHERE manufacturer = '$q_manufacturer'";
-													}
 												}
-												else {
-													$query = "SELECT * FROM $q_table";		
-												}
+
+
 												//echo $query . "\n";
-												mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);				
-												$result = mysql_query($query,$V6UpgradeDatabase);
-												while($row_result = mysql_fetch_assoc($result)){
+												
+												//mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);				
+												
+												//$result = mysql_query($query,$V6UpgradeDatabase);
+
+												$result = mysqli_query($V6UpgradeDatabase,$query);
+												
+												//$row = mysql_fetch_assoc($result)
+												
+												while($row_result = mysqli_fetch_assoc($result)){
 											?>
 
 											<tr>
@@ -153,6 +151,10 @@
 												$data_count++;
 												}
 												echo "共有" . $data_count ."筆資料";
+
+												$_SESSION["manufacturer"] = "";
+
+												$_SESSION["model"] = "";
 											?>
 										</table>
 									</section>

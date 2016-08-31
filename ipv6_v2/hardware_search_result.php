@@ -1,15 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-
-Name       : EntryWay 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20140124
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,61 +35,76 @@ Released   : 20140124
 <div id="wel">
 	<div class="container">
 		<h2>IPv6硬體支援查詢</h2>
-		<?php
-			session_start();
-		?>
 		<div style="padding-left:170px; width:670;">
-			<?php 
+			<?php
+
+				session_start();
+
 				require_once("Connections/V6UpgradeDatabase.php");
+				include_once("Myfunction/session_search_data_process.php");
 
-				if(isset($_SESSION['table']))
-					$q_table = $_SESSION['table'];
+				if($_SESSION['table'] == "")
+					return;	
 				else
-					$q_table = "";
+					$q_table = $_SESSION['table'];
 
-				if(isset($_SESSION['brand']))
+				if($_SESSION['brand'] != "")
 					$q_brand = $_SESSION['brand'];
 				else
 					$q_brand = "";
 
-				if(isset($_SESSION['code']))
+				if($_SESSION['code'] != "")
 					$q_code = $_SESSION['code'];
 				else
 					$q_code = "";
 
-				$q_version = "";
+				/*
+				//for debug check
+				echo "q_table = " . "$q_table" ."<br>";
+				echo "q_brand = " . "$q_brand" ."<br>";
+				echo "q_code = " . "$q_code" ."<br>";
+				echo "q_version = " . "$q_version" ."<br>";
+				*/
+
+				//start searching option
 
 
+				if($q_code == "" && $q_brand == ""){
+					$query = "SELECT * FROM $q_table ORDER BY Search_timeset DESC";
 
-			/*$query = "SELECT * FROM `$q_table` WHERE Search_menufactor='$q_brand' ORDER BY Search_timeset DESC";
-			mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);
-			$result = mysql_query($query,$V6UpgradeDatabase);
-			$row_result = mysql_fetch_assoc($result);*/
+				}else if($q_code == "" && $q_brand != ""){
+					$query = "SELECT * FROM $q_table WHERE Search_menufactor='$q_brand' ORDER BY Search_timeset DESC";
+				}else{
+					$query = "SELECT * FROM $q_table WHERE Search_menufactor='$q_brand' AND Search_code='$q_code' ORDER BY Search_timeset DESC";
+				}
 
-			//start searching option
+				//echo "query = $query";	
 
-				if($q_brand == "" && $q_code == "")
-					$query = "SELECT * FROM `$q_table` ORDER BY Search_timeset DESC";
-				else if($q_code == "" && $q_version == "")
-					$query = "SELECT * FROM `$q_table` WHERE Search_menufactor='$q_brand' ORDER BY Search_timeset DESC";
-				else if($q_version == "")
-					$query = "SELECT * FROM `$q_table` WHERE Search_menufactor='$q_brand' AND Search_code='$q_code' ORDER BY Search_timeset DESC";
-				else
-					$query = "SELECT * FROM `$q_table` WHERE Search_menufactor='$q_brand' AND Search_code='$q_code' AND Search_version ='$q_version' ORDER BY Search_timeset DESC";
+				//mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);
 
-				mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);
-				$result = mysql_query($query,$V6UpgradeDatabase);
-				$row_result = mysql_fetch_assoc($result);
+				//$result = mysql_query($query,$V6UpgradeDatabase);
+				
+				$result = mysqli_query($V6UpgradeDatabase,$query);
+
+				//$row_result = mysql_fetch_assoc($result);
+			
+				$row_result = mysqli_fetch_assoc($result);
 			
 			?>
 
 
-			<?php $count = "" ; 
-				if($row_result=="") $count = 0; else $count = 1;
+			<?php 
+				$count = "" ; 
+				
+				if($row_result=="") 
+					$count = 0; 
+				else 
+					$count = 1;
 			?>
 
 			<?php if($row_result=="")echo "<h1>No Data!</h1>"; //無資料時，之後須印有支援表格
-				else do{
+				else 
+					do{
 			?>
 	
 			<?php if($count == 1){ ?>
@@ -119,7 +123,7 @@ Released   : 20140124
 			<div style="width:670;">
 				<table border="2" style="word-break:break-all;" >
 			
-				<?php }?>
+				<?php } ?>
 			
 			   	<tr>
 			    	<td width="139px">&nbsp;<?php echo $row_result['Search_type']; ?> &nbsp;</td>
@@ -130,8 +134,9 @@ Released   : 20140124
 			    </tr>
 				
 				<?php 
-					$count++; }
-					while($row_result=mysql_fetch_assoc($result));
+					$count++; 
+					}while($row_result=mysqli_fetch_assoc($result));
+					//mysql_fetch_assoc($result)
 				?>
 
 				</table>
@@ -143,9 +148,14 @@ Released   : 20140124
 		<?php 
 			if($count != 0){
 				echo "<h3 >一共有";
-				echo $count -1 ;
+				echo $count - 1 ;
 				echo "筆資料</h3>"; 
 			}
+
+			mysqli_close($V6UpgradeDatabase);
+			reset_session_table_query_data();
+			mysqli_free_result($result);
+
 		?>
 
 	</div>
@@ -157,8 +167,3 @@ Released   : 20140124
 </div>
 </body>
 </html>
-<?php 
-	 mysql_free_result($result);
-	 session_unset();
-?> 
-

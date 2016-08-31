@@ -11,11 +11,6 @@
 	$data_count = 0;
 ?>
 <!DOCTYPE HTML>
-<!--
-	Halcyonic by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>IPv6分享器搜尋系統</title>
@@ -77,9 +72,14 @@
 
 												$query = "SELECT DISTINCT model , manufacturer FROM $q_table";
 												//echo $query . "\n";
-												mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);				
-												$result = mysql_query($query,$V6UpgradeDatabase);
-												while($row_result = mysql_fetch_assoc($result)){
+												//mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);				
+												
+												//$result = mysql_query($query,$V6UpgradeDatabase);
+
+												$result = mysqli_query($V6UpgradeDatabase,$query);
+
+												//$row_result = mysql_fetch_assoc($result)
+												while($row_result = mysqli_fetch_assoc($result)){
 											?>
 
 											<tr>

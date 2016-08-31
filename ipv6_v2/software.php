@@ -1,15 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-
-Name       : EntryWay 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20140124
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,14 +44,8 @@ Released   : 20140124
 				<select id="myParentSelect" Style="Font-Size:20pt">
 					<option value="0">請選擇(*必選)</option>
 				<?php
-				    // 資料庫設定
-				    require_once("Connections/V6UpgradeDatabase.php");
-				    mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);
-				    // 動態取得第一階層下拉式選單
-				    //$query = "show tables";
-					$query = "show tables";
-				    $result = mysql_query($query,$V6UpgradeDatabase);
 					
+					//預計以後使用其他方式作第一個下拉式選單內容的初始化						
 					echo '<option value="' . $j=5 . '">DNS伺服器軟體</option>' . "\n";
 					echo '<option value="' . $j=8 . '">Web伺服器軟體</option>' . "\n";
 					echo '<option value="' . $j=9 . '">E-mail伺服器軟體</option>' . "\n";
@@ -87,86 +70,83 @@ Released   : 20140124
 
 				<script> 
 				$(document).ready(function(){  
-				 	 //-------------------------第一層　設備類型-------------------------------
+				 	 //-------------------------更新 第2層 品牌-------------------------------
 				   $('#myParentSelect').change(function(){  
 				      //更動第一層時第二,三層清空
 				     $('#myFirstChildSelect').empty().append("<option value='0'>請選擇</option>");
 					 $('#mySecondChildSelect').empty().append("<option value='0'>請選擇</option>");
-				     var i=1;
-					 var j=0;
-				     $.ajax({  
-				     type:    "GET",  
-				     url:     "software_action.php",  
-					  //data : 傳到action1.php的值 用網頁傳
-					  //table: .html html輸出的格式
-					  //lv   : .val selected的option參數
-					  //
-				     data:    {act:'first',table: $('#myParentSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
-				     datatype:  "json",  
-				     success: function(result){  
-				     //當第一層回到預設值時，第二層回到預設位置
-				     /*if(result == 0){  
-				       $('#myFirstChildSelect').val($('option:first').val());//pseudo selector   
-				      }*/
-				      //依據第一層回傳的值去改變第二層的內容
-				      while(i<result.length+1){  
-				      $("#myFirstChildSelect").append("<option value='"+i+"'>"+result[j]['Search_menufactor']+"</option>");  
-				      i++;
-					  j++;
-				     }  
-				     },  
-				     error:  function(error){  
-				       alert("error"); 
-				     }  
-				     });
+ 				     if($('#myParentSelect').val() != 0){
+					     var i=1;
+						 var j=0;
+					     $.ajax({  
+					     type:    "GET",  
+					     url:     "software_action.php",  
+						  //data : 傳到software_action.php的值 
+						  //table: 所選的元素 html輸出的格式，例：負載平衡器
+						  //lv   : 所選的元素 selected的option參數，例如：1 (負載平衡器)
+						  //
+					     data:    {act:'first',table: $('#myParentSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
+					     datatype:  "json",  
+					     success: function(result){  
+					     //當第一層回到預設值時，第二層回到預設位置
+
+					      //依據第一層回傳的值去改變第二層的內容
+					      while(i<result.length+1){  
+					      $("#myFirstChildSelect").append("<option value='"+i+"'>"+result[j]['Search_menufactor']+"</option>");  
+					      i++;
+						  j++;
+					     }  
+					     },  
+					     error:  function(error){  
+					       alert("error,myParentSelect change"); 
+					     }  
+					     });
+				 	 }
 					});   
-					   // -------------------------第二層　品牌------------------------------
+					   // -------------------------更新 第3層 版本------------------------------
 				   $('#myFirstChildSelect').change(function(){  
 				      //更動第一層時第二,三層清空
-				     $('#mySecondChildSelect').empty().append("<option value=''>請選擇</option>");
-				     var i=1;
-					 var j=0;
-				     $.ajax({  
-				     type:    "GET",  
-				     url:     "software_action.php",  
-					  //data : 傳到action2.php的值 用網頁傳
-					  //table: .html html輸出的格式
-					  //lv   : .val selected的option參數
-					  //
-				     data:    {act:'second',table: $('#myFirstChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
-				     datatype:  "json",  
-				     success: function(result){  
-				     //當第2層回到預設值時，第3層回到預設位置
-				     /*if(result == 0){  
-				       $('#mySecondChildSelect').val($('option:first').val());//pseudo selector   
-				      }*/
-				      //依據第2層回傳的值去改變第3層的內容
-				      while(i<result.length+1){  
-				      $("#mySecondChildSelect").append("<option value='"+i+"'>"+result[j]['Search_version']+"</option>");  
-				      i++;
-					  j++;
-				     }  
-				     },  
-				     error:  function(error){  
-				       alert("error"); 
-				     }  
-				     });
+				     $('#mySecondChildSelect').empty().append("<option value='0'>請選擇</option>");
+
+  				     if($('#myFirstChildSelect').val() != 0){				
+					     var i=1;
+						 var j=0;
+					     $.ajax({  
+					     type:    "GET",  
+					     url:     "software_action.php",  
+					     data:    {act:'second',table: $('#myFirstChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
+					     datatype:  "json",  
+					     success: function(result){  
+	 				      //依據第2層回傳的值去改變第3層的內容
+					      while(i<result.length+1){  
+						      $("#mySecondChildSelect").append("<option value='"+i+"'>"+result[j]['Search_version']+"</option>");  
+						      i++;
+							  j++;
+					      }  
+					     },  
+					     error:  function(error){  
+					       alert("error,myFirstChildSelect change"); 
+					     }  
+					     });
+				 	 }
 					});
-					   // -------------------------第三層　版本------------------------------
+					   // -------------------------收尾用------------------------------
 				   $('#mySecondChildSelect').change(function(){  
-				     $.ajax({  
-				     type:    "GET",  
-				     url:     "software_action.php",  
-				     data:    {act:'third',table: $('#mySecondChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
-				     datatype:  "json" ,
-					  success: function(result){  
-				     //當第2層回到預設值時，第3層回到預設位置
-				      
-				     },  
-				     error:  function(error){  
-				       alert("error"); 
-				     }
-				     });
+
+				   	 if($('#mySecondChildSelect').val() != 0){
+					     $.ajax({  
+					     type:    "GET",  
+					     url:     "software_action.php",  
+					     data:    {act:'third',table: $('#mySecondChildSelect option:selected').html() ,lv:$('#myParentSelect option:selected').val()},
+					     datatype:  "json" ,
+						  success: function(result){  
+					      
+					     },  
+					     error:  function(error){  
+					       alert("error,mySecondChildSelect change"); 
+					     }
+					     });
+					 }
 					});
 				});
 				</script>

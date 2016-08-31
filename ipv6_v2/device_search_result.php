@@ -1,15 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-
-Name       : EntryWay 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20140124
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,6 +10,7 @@ Released   : 20140124
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<script type="text/javascript" src="jquery.js"></script>
 
 </head>
 <body>
@@ -48,6 +38,8 @@ Released   : 20140124
 		<div>
 			<?php 
 				require_once("Connections/V6UpgradeDatabase.php");
+				include_once("Myfunction/session_search_data_process.php");
+				
 				session_start();
 
 				if(isset($_SESSION['table']))
@@ -69,6 +61,7 @@ Released   : 20140124
 
 				
 				/* 
+			 	//for debug check
 				echo "q_table = " . "$q_table" ."<br>";
 				echo "q_brand = " . "$q_brand" ."<br>";
 				echo "q_code = " . "$q_code" ."<br>";
@@ -98,12 +91,19 @@ Released   : 20140124
 						break;
 				}			
 
+				//debug
+				//echo "query = $query";
+
 				//start searching option
-//				$query = "SELECT * FROM `$q_table` WHERE Search_menufactor='$q_brand' AND Search_code='$q_code' AND Search_version ='$q_version'";
 				if($query!=""){
-					mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);				
-					$result = mysql_query($query,$V6UpgradeDatabase);
-					$row_result = mysql_fetch_assoc($result);
+					//mysql_select_db($database_V6UpgradeDatabase,$V6UpgradeDatabase);	
+
+			        //$result = mysql_query($query, $V6UpgradeDatabase);
+			        $result = mysqli_query($V6UpgradeDatabase,$query);
+
+					//$row_result = mysql_fetch_assoc($result);
+										
+					$row_result = mysqli_fetch_assoc($result);
 					if ($row_result['Search_upgradable']== "1"){
 
 						echo "<h1>Acceptable</h1>";
@@ -113,13 +113,20 @@ Released   : 20140124
 							$count = 1;
 						else
 							$count = $row_result['Search_timeset'] + 1;
-						mysql_query("UPDATE `$q_table` SET Search_timeset = '$count'  WHERE Search_id = '$id' ",$V6UpgradeDatabase);	
+
+						mysqli_query($V6UpgradeDatabase,"UPDATE `$q_table` SET Search_timeset = '$count'  WHERE Search_id = '$id' ");
+
 					}else{
 						echo "<h1>Unacceptable</h1>";
 					}
 				}else{
 					echo "<h1>資料輸入有誤！請重新輸入!</h1> <br \>";
 				}
+
+				mysqli_close($V6UpgradeDatabase);
+				reset_session_table_query_data();
+				mysqli_free_result($result); 
+
 			?>
 
 </div>
@@ -133,4 +140,3 @@ Released   : 20140124
 </div>
 </body>
 </html>
-<?php mysql_free_result($result); ?> 
